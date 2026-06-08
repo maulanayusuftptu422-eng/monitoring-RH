@@ -15,56 +15,29 @@
 
     <div id="auth-screen" class="fixed inset-0 z-[100] bg-slate-900 flex justify-center items-center p-4 transition-opacity duration-500">
         <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-2xl w-full max-w-md relative overflow-hidden">
-            
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-extrabold text-emerald-400 tracking-wider mb-2">RH<span class="text-white">Control</span></h1>
                 <p class="text-sm text-slate-400">Sistem Pemantauan Terenkripsi</p>
             </div>
-
             <form id="form-login" class="space-y-4 block" onsubmit="handleLogin(event)">
-                <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase">Username</label>
-                    <input type="text" id="login-username" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase">Password</label>
-                    <input type="password" id="login-pw" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition">
-                </div>
-                <div class="flex justify-between items-center text-sm pt-2">
-                    <button type="button" onclick="switchAuthView('reset')" class="text-emerald-400 hover:text-emerald-300">Lupa Password?</button>
-                </div>
+                <div><label class="text-xs font-bold text-slate-400 uppercase">Username</label><input type="text" id="login-username" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition"></div>
+                <div><label class="text-xs font-bold text-slate-400 uppercase">Password</label><input type="password" id="login-pw" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500 transition"></div>
+                <div class="flex justify-between items-center text-sm pt-2"><button type="button" onclick="switchAuthView('reset')" class="text-emerald-400 hover:text-emerald-300">Lupa Password?</button></div>
                 <button type="submit" id="btn-login" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-lg shadow-lg transition mt-4">MASUK DASHBOARD</button>
                 <p class="text-center text-sm text-slate-400 mt-4">Belum punya akun? <button type="button" onclick="switchAuthView('register')" class="text-white font-bold hover:text-emerald-400">Daftar Baru</button></p>
             </form>
-
             <form id="form-register" class="space-y-4 hidden" onsubmit="handleRegister(event)">
-                <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase">Nama Lengkap</label>
-                    <input type="text" id="reg-name" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase">Username</label>
-                    <input type="text" id="reg-username" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase">Email Aktif (Untuk Verifikasi)</label>
-                    <input type="email" id="reg-email" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase">Password Lengkap</label>
-                    <input type="password" id="reg-pw" required minlength="6" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500">
-                </div>
+                <div><label class="text-xs font-bold text-slate-400 uppercase">Nama Lengkap</label><input type="text" id="reg-name" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500"></div>
+                <div><label class="text-xs font-bold text-slate-400 uppercase">Username</label><input type="text" id="reg-username" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500"></div>
+                <div><label class="text-xs font-bold text-slate-400 uppercase">Email Aktif</label><input type="email" id="reg-email" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500"></div>
+                <div><label class="text-xs font-bold text-slate-400 uppercase">Password Lengkap</label><input type="password" id="reg-pw" required minlength="6" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500"></div>
                 <button type="submit" id="btn-reg" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-lg shadow-lg transition mt-4">BUAT AKUN</button>
                 <p class="text-center text-sm text-slate-400 mt-4">Sudah ada akun? <button type="button" onclick="switchAuthView('login')" class="text-white font-bold hover:text-emerald-400">Kembali Login</button></p>
             </form>
-
             <form id="form-reset" class="space-y-4 hidden" onsubmit="handleReset(event)">
-                <p class="text-sm text-slate-400 text-center mb-4">Masukkan email Anda. Kami akan mengirimkan tautan untuk membuat password baru.</p>
-                <div>
-                    <label class="text-xs font-bold text-slate-400 uppercase">Email Akun</label>
-                    <input type="email" id="reset-email" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500">
-                </div>
-                <button type="submit" id="btn-reset" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-3 rounded-lg shadow-lg transition mt-4">KIRIM LINK RESET</button>
+                <p class="text-sm text-slate-400 text-center mb-4">Masukkan email Anda untuk link reset.</p>
+                <div><label class="text-xs font-bold text-slate-400 uppercase">Email Akun</label><input type="email" id="reset-email" required class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-emerald-500"></div>
+                <button type="submit" id="btn-reset" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-3 rounded-lg shadow-lg transition mt-4">KIRIM LINK</button>
                 <p class="text-center text-sm text-slate-400 mt-4"><button type="button" onclick="switchAuthView('login')" class="text-white font-bold hover:text-emerald-400">Batal</button></p>
             </form>
         </div>
@@ -72,23 +45,14 @@
 
     <aside id="sidebar" class="w-64 bg-slate-800 border-r border-slate-700 flex flex-col fixed h-full z-50 transition-transform duration-300 -translate-x-full md:translate-x-0">
         <div class="p-6 border-b border-slate-700 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-extrabold text-emerald-400 tracking-wider">RH<span class="text-white">Control</span></h1>
-                <p class="text-xs text-slate-400 mt-1">Sistem Pemantauan ESP32</p>
-            </div>
-            <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-rose-400 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
+            <div><h1 class="text-xl font-extrabold text-emerald-400 tracking-wider">RH<span class="text-white">Control</span></h1><p class="text-xs text-slate-400 mt-1">Sistem Pemantauan ESP32</p></div>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-slate-400 hover:text-rose-400 transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
         </div>
-        
         <div class="px-6 py-4 border-b border-slate-700/50 bg-slate-900/30">
             <p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Logged in as</p>
             <p id="user-display-name" class="text-sm font-bold text-emerald-400 truncate">Memuat...</p>
-            <button onclick="handleLogout()" class="text-xs text-rose-400 hover:text-rose-300 mt-1 flex items-center gap-1">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg> Sign Out
-            </button>
+            <button onclick="handleLogout()" class="text-xs text-rose-400 hover:text-rose-300 mt-1 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg> Sign Out</button>
         </div>
-
         <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
             <button onclick="switchView('home')" id="nav-home" class="nav-btn active w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> Home</button>
             <button onclick="switchView('history')" id="nav-history" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all text-slate-400 hover:bg-slate-700/50"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Riwayat Data</button>
@@ -118,10 +82,11 @@
                     <h2 class="card-title">Status Sistem & Timer</h2>
                     <div id="badge-mode" class="badge-mode bg-slate-700 text-slate-200 text-center">STANDBY</div>
                     <div class="mt-4 space-y-2">
-                        <div class="timer-row"><span>Timer Standby (8 Jam)</span><span id="timer-standby" class="timer-value">--</span></div>
-                        <div class="timer-row"><span>Durasi Adsorpsi (tAds)</span><span id="timer-tads" class="timer-value">--</span></div>
-                        <div class="timer-row"><span>Regenerasi Rutin (1 Jam)</span><span id="timer-treg" class="timer-value">--</span></div>
-                        <div class="timer-row border-none"><span>Regenerasi Paksa (30 Min)</span><span id="timer-tdar" class="timer-value">--</span></div>
+                        <div class="timer-row"><span>Timer Loop</span><span id="timer-loop" class="timer-value text-emerald-400">--</span></div>
+                        <div class="timer-row"><span>Durasi Adsorpsi</span><span id="timer-tads" class="timer-value">--</span></div>
+                        <div class="timer-row"><span>Durasi Regenerasi Rutin</span><span id="timer-treg" class="timer-value">--</span></div>
+                        <div class="timer-row"><span>Forced Regeneration</span><span id="timer-forced" class="timer-value">--</span></div>
+                        <div class="timer-row border-none"><span>Durasi Cooldown</span><span id="timer-cooldown" class="timer-value">--</span></div>
                     </div>
                 </div>
                 <div class="card-panel">
@@ -129,7 +94,7 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div id="act-heater" class="actuator-box"><p>HEATER</p><p class="status">OFF</p></div>
                         <div id="act-fan-dehum" class="actuator-box"><p>FAN SIRKULASI</p><p class="status">OFF</p></div>
-                        <div id="act-fan-in" class="actuator-box"><p>FAN IN (VENT)</p><p class="status">OFF</p></div>
+                        <div id="act-fan-in" class="actuator-box"><p>FAN IN</p><p class="status">OFF</p></div>
                         <div id="act-fan-out" class="actuator-box"><p>FAN OUT</p><p class="status">OFF</p></div>
                     </div>
                 </div>
@@ -148,7 +113,17 @@
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm text-slate-300">
                         <thead class="bg-slate-900 text-slate-400 uppercase text-xs">
-                            <tr><th class="px-4 py-3 rounded-tl-lg">Waktu</th><th class="px-4 py-3">Mode</th><th class="px-4 py-3">RH In</th><th class="px-4 py-3">RH Out</th><th class="px-4 py-3">Temp In</th><th class="px-4 py-3">Aktuator</th></tr>
+                            <tr>
+                                <th class="px-4 py-3 rounded-tl-lg">Waktu</th>
+                                <th class="px-4 py-3">Mode</th>
+                                <th class="px-4 py-3">RH In</th>
+                                <th class="px-4 py-3">RH Out</th>
+                                <th class="px-4 py-3">Temp In</th>
+                                <th class="px-4 py-3">
+                                    Aktuator <br>
+                                    <span class="text-[10px] text-slate-500 normal-case font-normal">(Heater / Fan Dehum / Fan In / Fan Out)</span>
+                                </th>
+                            </tr>
                         </thead>
                         <tbody id="history-tbody" class="divide-y divide-slate-700/50">
                             <tr><td colspan="6" class="text-center py-8 text-slate-500">Pilih tanggal dan klik cari untuk memuat data.</td></tr>
@@ -166,11 +141,13 @@
 
             <div id="area-realtime-chart" class="block space-y-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="card-panel"><h2 class="card-title mb-4">1. Respons Transien RH</h2><div class="relative w-full h-[300px]"><canvas id="rtChart1"></canvas></div></div>
-                    <div class="card-panel"><h2 class="card-title mb-4">2. Sinkronisasi Aktuator</h2><div class="relative w-full h-[300px]"><canvas id="rtChart2"></canvas></div></div>
-                    <div class="card-panel"><h2 class="card-title mb-4">3. Efektivitas Ventilasi</h2><div class="relative w-full h-[300px]"><canvas id="rtChart3"></canvas></div></div>
-                    <div class="card-panel"><h2 class="card-title mb-4">4. Siklus Regenerasi (Suhu vs RH Buang)</h2><div class="relative w-full h-[300px]"><canvas id="rtChart4"></canvas></div></div>
-                    <div class="card-panel lg:col-span-2"><h2 class="card-title mb-4">5. Siklus Adsorpsi (Suhu vs RH Ruangan)</h2><div class="relative w-full h-[350px]"><canvas id="rtChart5"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">1. Respons Transien RH</h2><div class="relative w-full h-[260px]"><canvas id="rtChart1"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">2. Status Aktuator: Heater</h2><div class="relative w-full h-[260px]"><canvas id="rtChart2"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">3. Status Aktuator: Fan Dehum</h2><div class="relative w-full h-[260px]"><canvas id="rtChart3"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">4. Status Aktuator: Fan In</h2><div class="relative w-full h-[260px]"><canvas id="rtChart4"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">5. Status Aktuator: Fan Out</h2><div class="relative w-full h-[260px]"><canvas id="rtChart5"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">6. Parameter Lingkungan (Suhu & RH)</h2><div class="relative w-full h-[260px]"><canvas id="rtChart6"></canvas></div></div>
+                    <div class="card-panel lg:col-span-2"><h2 class="card-title mb-4">7. Siklus Regenerasi (Suhu & RH Buang vs Suhu Ruangan)</h2><div class="relative w-full h-[320px]"><canvas id="rtChart7"></canvas></div></div>
                 </div>
             </div>
 
@@ -179,9 +156,7 @@
                     <div class="flex flex-col md:flex-row items-center gap-3">
                         <input type="date" id="chart-date" class="bg-slate-900 border border-slate-700 text-white rounded px-3 py-2 text-sm outline-none">
                         <div class="flex items-center gap-2">
-                            <input type="time" id="chart-time-start" class="bg-slate-900 border border-slate-700 text-white rounded px-3 py-2 text-sm outline-none" title="Jam Mulai">
-                            <span class="text-slate-400 text-sm">s/d</span>
-                            <input type="time" id="chart-time-end" class="bg-slate-900 border border-slate-700 text-white rounded px-3 py-2 text-sm outline-none" title="Jam Akhir">
+                            <input type="time" id="chart-time-start" class="bg-slate-900 border border-slate-700 text-white rounded px-3 py-2 text-sm outline-none"><span class="text-slate-400 text-sm">s/d</span><input type="time" id="chart-time-end" class="bg-slate-900 border border-slate-700 text-white rounded px-3 py-2 text-sm outline-none">
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -191,11 +166,13 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="card-panel"><h2 class="card-title mb-4">1. Respons Transien RH (Playback)</h2><div class="relative w-full h-[300px]"><canvas id="histChart1"></canvas></div></div>
-                    <div class="card-panel"><h2 class="card-title mb-4">2. Sinkronisasi Aktuator (Playback)</h2><div class="relative w-full h-[300px]"><canvas id="histChart2"></canvas></div></div>
-                    <div class="card-panel"><h2 class="card-title mb-4">3. Efektivitas Ventilasi (Playback)</h2><div class="relative w-full h-[300px]"><canvas id="histChart3"></canvas></div></div>
-                    <div class="card-panel"><h2 class="card-title mb-4">4. Siklus Regenerasi (Playback)</h2><div class="relative w-full h-[300px]"><canvas id="histChart4"></canvas></div></div>
-                    <div class="card-panel lg:col-span-2"><h2 class="card-title mb-4">5. Siklus Adsorpsi (Playback)</h2><div class="relative w-full h-[350px]"><canvas id="histChart5"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">1. Respons Transien RH (Playback)</h2><div class="relative w-full h-[260px]"><canvas id="histChart1"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">2. Status Aktuator: Heater (Playback)</h2><div class="relative w-full h-[260px]"><canvas id="histChart2"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">3. Status Aktuator: Fan Dehum (Playback)</h2><div class="relative w-full h-[260px]"><canvas id="histChart3"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">4. Status Aktuator: Fan In (Playback)</h2><div class="relative w-full h-[260px]"><canvas id="histChart4"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">5. Status Aktuator: Fan Out (Playback)</h2><div class="relative w-full h-[260px]"><canvas id="histChart5"></canvas></div></div>
+                    <div class="card-panel"><h2 class="card-title mb-4">6. Parameter Lingkungan (Playback)</h2><div class="relative w-full h-[260px]"><canvas id="histChart6"></canvas></div></div>
+                    <div class="card-panel lg:col-span-2"><h2 class="card-title mb-4">7. Siklus Regenerasi (Playback)</h2><div class="relative w-full h-[320px]"><canvas id="histChart7"></canvas></div></div>
                 </div>
             </div>
         </section>
@@ -203,7 +180,7 @@
         <section id="view-about" class="hidden">
             <div class="card-panel space-y-4 max-w-3xl">
                 <h2 class="text-2xl font-bold text-emerald-400 border-b border-slate-700 pb-2">Sistem Kontrol Kelembapan Relatif Berbasis ESP32</h2>
-                <p class="text-slate-300 leading-relaxed text-justify">Sistem dirancang untuk mempertahankan nilai Kelembapan Relatif (RH) ruang tertutup di rentang <b>(40% - 60%)</b> menggunakan sensor DHT22, Dehumidifier Desiccant, dan Ventilasi Aktif Cerdas.</p>
+                <p class="text-slate-300 leading-relaxed text-justify">Sistem dirancang untuk mempertahankan nilai Kelembapan Relatif (RH) ruang tertutup di rentang <b>(40% - 60%)</b> menggunakan sensor DHT22, Desiccant Dehumidifier, dan Ventilasi Aktif Cerdas.</p>
             </div>
         </section>
     </main>
